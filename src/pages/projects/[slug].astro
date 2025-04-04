@@ -6,7 +6,7 @@ import TextBox from '../../components/TextBox.astro';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
-  return projectEntries.map(entry => ({
+  return projectEntries.map((entry: { slug: string; data: any }) => ({
     params: { slug: entry.slug }, props: { entry },
   }));
 }
@@ -19,6 +19,7 @@ interface Props {
       description: string;
       icon: string;
       url: string;
+      video_url: string;
     };
     render: () => Promise<{ Content: any; headings: any[] }>;
   };
@@ -26,9 +27,11 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
+
+const showImage = entry.data.video_url != "";
 ---
 
-<Layout title={`${entry.data.title} - Uayeb Caballero`}>
+<Layout title={`${entry.data.title} - Roger Barahona`}>
     
     <div>Hola</div>
 
@@ -47,7 +50,17 @@ const { Content, headings } = await entry.render();
       </TextBox>
     </div>
 
-    <div class="flex w-full justify-around">
+    <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center ">
+      <a href={entry.data.url}  class="anchor">
+        <Image
+          src={entry.data.icon}
+          alt=""
+          width={480}
+          height={232}
+          class="rounded-xl"
+        />
+      </a>
+       <div class="flex w-full justify-around">
         {entry.data.url ? <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
           <Image
             src="/images/skills/github.png"
@@ -69,6 +82,8 @@ const { Content, headings } = await entry.render();
         </a>
         ) : ""}
       </div>
+      
+    </div>
 </Layout>
 
 <style is:global>
