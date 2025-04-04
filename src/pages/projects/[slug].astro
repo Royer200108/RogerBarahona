@@ -47,26 +47,28 @@ const { Content, headings } = await entry.render();
       </TextBox>
     </div>
 
-    <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center ">
-      <a href={entry.data.url}  class="anchor">
-        <Image
-          src={entry.data.icon}
-          alt=""
-          width={480}
-          height={232}
-          class="rounded-xl"
-        />
-      </a>
-      <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
-        <Image
-        src="/images/skills/github.png"
-        alt=""
-        width={70}
-        height={70}
-        class=""
-      />
-    </a>
-    </div>
+    <div class="flex w-full justify-around">
+        {entry.data.url ? <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
+          <Image
+            src="/images/skills/github.png"
+            alt=""
+            width={70}
+            height={70}
+            class=""
+          />
+        </a> : ""}
+        {entry.data.video_url ? (
+          <a href={entry.data.video_url} target="_blank" rel="noopener noreferrer" class="">
+          <Image
+            src="/images/extras/youtube.png"
+            alt=""
+            width={70}
+            height={70}
+            class="pt-2"
+          />
+        </a>
+        ) : ""}
+      </div>
 </Layout>
 
 <style is:global>
