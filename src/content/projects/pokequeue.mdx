@@ -1,0 +1,43 @@
+---
+title: "PokeQueue"
+description: "Creación y despliegue de una aplicación web que se encargue de brindar información acerca de los Pokémon de un determinado tipo."
+icon: "/images/projects/pokequeue.png"
+url: ""
+---
+
+## ¿Cuál es el fin de este proyecto?
+El objetivo de este proyecto es modificar un sistema base previamente existente, profundizando en el conocimiento necesario para aplicar una serie de modificaciones y así poniendo a prueba las capacidades de adaptabilidad y manejo de distintas herramientas de desarrollo.
+
+
+## ¿En qué consistió este proyecto?.
+Este proyecto consiste en la creación y despliegue de una aplicación web que permita a los usuarios hacer solicitudes de reportes en formato csv basados en datos de una API externa (PokeAPI)
+
+### ¿Con qué servicios cuenta esta aplicación web?
+
+Esta aplicación cuenta con lo siguientes servicios que están alojados en la nube de azure:
+
+* Una interfaz moderna y estilizada.
+* Una API robusta y segura.
+* Un background process que es el que se encarga de crear los reportes.
+
+### ¿Cuáles son las modificaciones realizadas al proyecto base?
+
+#### Tarea 1. Implementar eliminación completa de reportes específicos.
+En el sistema original no era posible realizar esta operación, por lo que los reportes se quedaban alojados en el storage de la webapp "para siempre", lo que posteriormente puede desembocar en problemas de almacenamiento; lo que vuelve necesaria la funcionalidad de eliminar reportes que el usuario considere como innecesarios necesarios.
+
+#### Tarea 2. Enriquecer el reporte con detalles del Pokémon.
+Originalmente el reporte generado solo contenía los nombres de los Pokémon que pertenecieran al tipo que se deseaba analizar, lo cual no resulta muy informativo y debido a esto surge la necesidad de traer información más relevante (como ciertas estadísticas del Pokémon).
+
+#### Tarea 3. Generar reportes con muestreo aleatorio.
+El sistema original generaba reportes con todos los Pokémon que pertenecían a un tipo específico, trayendo en ciertos casos más información de la necesaria; a partir de este punto surge la necesidad de poder generar reportes cuya cantidad de contenido sea más "customizable".
+
+### Los enlaces directos a los tres repositorios en los que se ha separado este proyecto son:
+* https://github.com/Royer200108/Pokequeue.Terraform
+* https://github.com/Royer200108/Pokequeue.api
+* https://github.com/Royer200108/Pokequeue.ui
+* https://github.com/Royer200108/Pokequeue.functionapp
+* https://github.com/Royer200108/Pokequeue.sql
+
+
+### Diagrama de la arquitectura diseñada para este proyecto.
+<img src="/images/projects/pokequeue.png"></img>
